@@ -1,48 +1,4 @@
-fetch('data.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('projects');
-
-    Object.entries(data).forEach(([category, projects]) => {
-      
-      // Create category title
-      const title = document.createElement('h2');
-      title.textContent = category.replace('-', ' ');
-      container.appendChild(title);
-
-      // Create wrapper for projects
-      const section = document.createElement('div');
-
-      projects.forEach(project => {
-        const card = document.createElement('div');
-
-        const projectTitle = document.createElement('h3');
-        projectTitle.textContent = project.title;
-
-        const preview = document.createElement('p');
-        preview.textContent = "Preview: " + project["preview-image"];
-
-        const link = document.createElement('a');
-        link.textContent = "GitHub";
-        link.href = project["github-link"];
-        link.target = "_blank";
-
-        card.appendChild(projectTitle);
-        card.appendChild(preview);
-        card.appendChild(link);
-
-        section.appendChild(card);
-      });
-
-      container.appendChild(section);
-    });
-  })
-  .catch(err => console.error(err));
-
-  //
-
-
-  const canvas = document.getElementById("particles");
+const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
@@ -50,7 +6,6 @@ canvas.height = window.innerHeight;
 
 let particlesArray = [];
 
-// Particle class
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
@@ -64,7 +19,6 @@ class Particle {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        // wrap around screen
         if (this.x > canvas.width) this.x = 0;
         if (this.x < 0) this.x = canvas.width;
         if (this.y > canvas.height) this.y = 0;
@@ -79,7 +33,6 @@ class Particle {
     }
 }
 
-// init particles
 function init() {
     particlesArray = [];
     for (let i = 0; i < 100; i++) {
@@ -87,7 +40,6 @@ function init() {
     }
 }
 
-// animation loop
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -100,7 +52,6 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// connect nearby particles
 function connectParticles() {
     for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a; b < particlesArray.length; b++) {
@@ -120,7 +71,6 @@ function connectParticles() {
     }
 }
 
-// resize support
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
