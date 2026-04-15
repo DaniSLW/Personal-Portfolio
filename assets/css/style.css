@@ -29,7 +29,7 @@ html {
     background: var(--bg-main);
     color: var(--text-primary);
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 75px;
 }
 
 /* HEADER */
@@ -130,9 +130,31 @@ main .content {
     width: 100%;
     height: calc(100vh - 77px);
     border-bottom: 1px solid var(--border);
+    text-align: center;
 }
 main .content:nth-child(even) {
     background-color: var(--bg-secondary);
+}
+
+main .content .content-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+main .content .content-header h2 {
+    padding: 10px;
+    width: 350px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid;
+    border-image-source: linear-gradient(
+        to right, 
+        rgba(56, 189, 248, 0) 0%,
+        var(--accent) 50%,
+        rgba(56, 189, 248, 0) 100%
+    );
+    border-image-slice: 1;
+    box-shadow: 0 12px 10px -15px var(--accent-glow);
 }
 
 main .content .content-wrapper {
@@ -254,6 +276,11 @@ main .content .content-wrapper {
     height: 16px;
     fill: lime;
 }
+.content-wrapper .user-badges .busy svg {
+    width: 16px;
+    height: 16px;
+    fill: red;
+}
 .content-wrapper .user-badges .engineer svg,
 .content-wrapper .user-badges .frontend svg {
     width: 16px;
@@ -263,6 +290,32 @@ main .content .content-wrapper {
 .content-wrapper .user-badges .badge:hover.engineer svg,
 .content-wrapper .user-badges .badge:hover.frontend svg {
     fill: var(--text-primary);
+}
+
+/* PROJECTS */
+#project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+#project > div {
+    text-align: center;
+    width: auto;
+    height: auto;
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px var(--shadow);
+}
+
+#project > div > div > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 /* FOOTER */

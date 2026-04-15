@@ -1,16 +1,26 @@
 {
     "Project-1": [
         {
-            "title": "Custom Alerts",
-            "preview-image": "N/A",
-            "github-link": "N/A"
+            "title": "Personal Portfolio",
+            "preview-image": "https://raw.githubusercontent.com/DaniSLW/Custom-Alerts/refs/heads/main/assets/preview.png",
+            "github-link": "N/A",
+            "demo-link": "N/A"
         }
     ],
     "Project-2": [
         {
+            "title": "Custom Alerts",
+            "preview-image": "https://raw.githubusercontent.com/DaniSLW/Custom-Alerts/refs/heads/main/assets/preview.png",
+            "github-link": "N/A",
+            "demo-link": "N/A"
+        }
+    ],
+    "Project-3": [
+        {
             "title": "Battle Pass Template",
-            "preview-image": "N/A",
-            "github-link": "N/A"
+            "preview-image": "https://raw.githubusercontent.com/DaniSLW/Battlepass-Template-1/refs/heads/main/assets/img/preview.png",
+            "github-link": "https://github.com/DaniSLW/Battlepass-Template-1",
+            "demo-link": "N/A"
         }
     ]
 }

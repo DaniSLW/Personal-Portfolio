@@ -1,13 +1,13 @@
 fetch('data.json')
   .then(res => res.json())
   .then(data => {
-    const container = document.getElementById('projects');
+    const container = document.getElementById('project');
 
     Object.entries(data).forEach(([category, projects]) => {
       
-      const title = document.createElement('h2');
-      title.textContent = category.replace('-', ' ');
-      container.appendChild(title);
+      //const title = document.createElement('h2');
+      //title.textContent = category.replace('-', ' ');
+      //container.appendChild(title);
 
       const section = document.createElement('div');
 
@@ -17,17 +17,24 @@ fetch('data.json')
         const projectTitle = document.createElement('h3');
         projectTitle.textContent = project.title;
 
-        const preview = document.createElement('p');
-        preview.textContent = "Preview: " + project["preview-image"];
+        const preview = document.createElement('img');
+        preview.src = project["preview-image"];
+        preview.alt = "Project Preview";
 
-        const link = document.createElement('a');
-        link.textContent = "GitHub";
-        link.href = project["github-link"];
-        link.target = "_blank";
+        const link_git = document.createElement('a');
+        link_git.textContent = "GitHub";
+        link_git.href = project["github-link"];
+        link_git.target = "_blank";
+
+        const link_demo = document.createElement('a');
+        link_demo.textContent = "Demo";
+        link_demo.href = project["demo-link"];
+        link_demo.target = "_blank";
 
         card.appendChild(projectTitle);
         card.appendChild(preview);
-        card.appendChild(link);
+        card.appendChild(link_git);
+        card.appendChild(link_demo);
 
         section.appendChild(card);
       });
