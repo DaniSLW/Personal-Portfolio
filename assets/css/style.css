@@ -400,6 +400,8 @@ main .content .content-wrapper {
 #project .card-project .status-project {
     display: inline-flex;
     align-items: center;
+    width: fit-content;
+    max-width: max-content;
     gap: 6px;
     font-size: 12px;
     font-weight: 600;
@@ -448,13 +450,17 @@ main .content .content-wrapper {
     100% { box-shadow: 0 0 4px currentColor; }
 }
 
-#project > .card-project .links-container {
+#project .card-project .links-container {
     display: flex;
     gap: 12px;
     margin-top: 10px;
 }
-#project > .card-project .links-container a {
+#project .card-project .links-container a {
+    display: inline-flex;
     flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     text-align: center;
     padding: 10px 0;
     border-radius: 8px;
@@ -462,6 +468,11 @@ main .content .content-wrapper {
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
+}
+#project .card-project .links-container a svg {
+    width: 25px;
+    height: 25px;
+    fill: currentColor;
 }
 #project .card-project .links-container .demo-link {
     background-color: var(--accent);
