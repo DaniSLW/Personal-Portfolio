@@ -3,11 +3,8 @@
         {
             "title": "Personal Portfolio",
             "description": "A personal portfolio website showcasing my projects and skills.",
-            "preview-image": "",
-            "badge1": "HTML",
-            "badge2": "CSS",
-            "badge3": "JavaScript",
-            "badge4": "Json",
+            "preview-image": "assets/images/preview.png",
+            "tech": ["HTML", "CSS", "JavaScript", "JSON"],
             "status": "In Progress",
             "github-link": "https://github.com/DaniSLW/Personal-Portfolio",
             "demo-link": "N/A"
@@ -18,13 +15,10 @@
             "title": "Custom Alerts",
             "description": "A project that replaces the default JavaScript alert with a custom-designed one.",
             "preview-image": "https://raw.githubusercontent.com/DaniSLW/Custom-Alerts/refs/heads/main/assets/preview.png",
-            "badge1": "HTML",
-            "badge2": "CSS",
-            "badge3": "JavaScript",
-            "badge4": "N/A",
+            "tech": ["HTML", "CSS", "JavaScript"],
             "status": "Live",
-            "github-link": "N/A",
-            "demo-link": "N/A"
+            "github-link": "https://github.com/DaniSLW/Custom-Alerts",
+            "demo-link": "https://danislw.github.io/Custom-Alerts/"
         }
     ],
     "Project-3": [
@@ -32,10 +26,7 @@
             "title": "Battle Pass Template",
             "description": "A battle pass template inspired by Fortnite's design, showcasing a tier-based reward system.",
             "preview-image": "https://raw.githubusercontent.com/DaniSLW/Battlepass-Template-1/refs/heads/main/assets/img/preview.png",
-            "badge1": "HTML",
-            "badge2": "CSS",
-            "badge3": "JavaScript",
-            "badge4": "N/A",
+            "tech": ["HTML", "CSS", "JavaScript"],
             "status": "Live",
             "github-link": "https://github.com/DaniSLW/Battlepass-Template-1",
             "demo-link": "https://danislw.github.io/Battlepass-Template-1/"
@@ -46,10 +37,7 @@
             "title": "Atestat AI",
             "description": "A battle pass template inspired by Fortnite's design, showcasing a tier-based reward system.",
             "preview-image": "https://raw.githubusercontent.com/DaniSLW/Atestat-AI/refs/heads/main/preview.png",
-            "badge1": "HTML",
-            "badge2": "CSS",
-            "badge3": "JavaScript",
-            "badge4": "N/A",
+            "tech": ["HTML", "CSS", "JavaScript"],
             "status": "Archived",
             "github-link": "https://github.com/DaniSLW/Atestat-AI",
             "demo-link": "https://danislw.github.io/Atestat-AI/"

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/carousel.css">
 </head>
 <body>
   <header>
@@ -45,7 +46,7 @@
           <div class="home-buttons">
             <button class="btn btn-primary">View Projects</button>
             <button class="btn btn-secondary">Contact Me</button>
-            <button class="btn btn-secondary">Download CV</button>
+            <!-- <button class="btn btn-secondary">Download CV</button> -->
           </div>
         </div>
         <div class="user-content">
@@ -87,7 +88,11 @@
         <h2>Featured Projects</h2>
       </div>
       <div class="content-wrapper">
-        <div id="project"></div>
+        <div class="carousel">
+          <button class="carousel-btn prev">&#10094;</button>
+          <div class="carousel-track" id="project"></div>
+          <button class="carousel-btn next">&#10095;</button>
+        </div>
       </div>
     </div>
     <div class="content" id="contact">
@@ -101,6 +106,7 @@
     <p>&copy; 2026 SLW Portfolio. All rights reserved.</p>
   </footer>
 
+  <script src="assets/javascript/carosel.js"></script>
   <script src="assets/javascript/script.js"></script>
   <script src="assets/javascript/background.js"></script>
 </body>
