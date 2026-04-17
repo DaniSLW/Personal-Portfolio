@@ -325,11 +325,15 @@ main .content .content-wrapper {
     border-radius: 5px;
     margin-bottom: 10px;
 }
-#project > .card-project > .badge-project {
-    display: inline-block;
-    padding: 5px 10px;
+#project > .card-project .badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+#project > .card-project .badges-container .badge-project {
     background-color: var(--bg-card);
-    color: var(--text-secondary);
+    padding: 5px 10px;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 500;

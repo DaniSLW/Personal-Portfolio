@@ -3,13 +3,13 @@
         {
             "title": "Personal Portfolio",
             "description": "A personal portfolio website showcasing my projects and skills.",
-            "preview-image": "https://raw.githubusercontent.com/DaniSLW/Custom-Alerts/refs/heads/main/assets/preview.png",
+            "preview-image": "",
             "badge1": "HTML",
             "badge2": "CSS",
             "badge3": "JavaScript",
             "badge4": "Json",
             "status": "In Progress",
-            "github-link": "N/A",
+            "github-link": "https://github.com/DaniSLW/Personal-Portfolio",
             "demo-link": "N/A"
         }
     ],
@@ -38,21 +38,21 @@
             "badge4": "N/A",
             "status": "Live",
             "github-link": "https://github.com/DaniSLW/Battlepass-Template-1",
-            "demo-link": "N/A"
+            "demo-link": "https://danislw.github.io/Battlepass-Template-1/"
         }
     ],
     "Project-4": [
         {
             "title": "Atestat AI",
             "description": "A battle pass template inspired by Fortnite's design, showcasing a tier-based reward system.",
-            "preview-image": "https://raw.githubusercontent.com/DaniSLW/Battlepass-Template-1/refs/heads/main/assets/img/preview.png",
+            "preview-image": "https://raw.githubusercontent.com/DaniSLW/Atestat-AI/refs/heads/main/preview.png",
             "badge1": "HTML",
             "badge2": "CSS",
             "badge3": "JavaScript",
             "badge4": "N/A",
             "status": "Archived",
-            "github-link": "https://github.com/DaniSLW/Battlepass-Template-1",
-            "demo-link": "N/A"
+            "github-link": "https://github.com/DaniSLW/Atestat-AI",
+            "demo-link": "https://danislw.github.io/Atestat-AI/"
         }
     ]
 }
