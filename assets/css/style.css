@@ -713,7 +713,7 @@ main .content .content-wrapper {
 .contact-card .github-content .github-redirect svg {
     width: 20px;
     height: 20px;
-    fill: currentColor;
+    fill: #fff;
 }
 
 /* FOOTER */
