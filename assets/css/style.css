@@ -164,7 +164,7 @@ main .content .content-wrapper {
     align-items: center;
     justify-content: center;
     height: 100%;
-    gap: 200px;
+    gap: 50px;
 }
 
 .content-wrapper .home-content {
@@ -498,15 +498,15 @@ main .content .content-wrapper {
     justify-content: center;
     align-items: center;
     gap: 1px;
-    padding: 5px 10px 0px 5px;
+    padding: 2px 5px 0px 3px;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 500;
     line-height: 1;
 }
 #project .card-project .badges-container .icon svg {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     fill: currentColor;
     display: inline-block;
 }
@@ -656,14 +656,64 @@ main .content .content-wrapper {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  padding: 25px;
+  padding: 20px;
   transition: transform 0.3s ease;
 }
 
+.contact-card .contact-form {
+    display: flex;
+    flex-direction: column;
+}
 
-.contact-card:hover {
-  transform: translateY(-5px);
-  border-color: #00d2ff;
+.contact-card .card-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.contact-card .user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.contact-card .user-profile .user-image img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.contact-card .user-profile .user-content #githubName {
+    font-size: 16px;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+.contact-card .user-profile .user-content #githubUsername {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.contact-card .github-content {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.contact-card .github-content .github-redirect {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+}
+.contact-card .gihut-content .github-redirect a {
+    text-decoration: none;
+    color: #fff;
+}
+.contact-card .github-content .github-redirect svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
 }
 
 /* FOOTER */
