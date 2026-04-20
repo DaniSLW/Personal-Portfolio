@@ -164,7 +164,7 @@ main .content .content-wrapper {
     align-items: center;
     justify-content: center;
     height: 100%;
-    gap: 50px;
+    gap: 10px;
 }
 
 .content-wrapper .home-content {
@@ -652,12 +652,17 @@ main .content .content-wrapper {
 }
 
 .contact-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 20px;
-  transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2px);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    width: 270px;
+}
+.contact-card:hover {
+    border: 1px solid var(--accent-hover);
+    box-shadow: 0 0 10px 1px var(--accent-hover);
 }
 
 .contact-card .contact-form {
@@ -670,11 +675,41 @@ main .content .content-wrapper {
     font-size: 18px;
     margin-bottom: 20px;
 }
+
+/* get in touch */
+.contact-card .contact-me {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: 10px;
+}
+.contact-card .contact-me .contact-me-icon {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+
+}
+.contact-card .contact-me .contact-me-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* github */
 .contact-card .user-profile {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin: 10px auto;
+    width: fit-content;
 }
 .contact-card .user-profile .user-image img {
     width: 40px;
@@ -697,7 +732,7 @@ main .content .content-wrapper {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .contact-card .github-content .github-redirect {
@@ -714,6 +749,7 @@ main .content .content-wrapper {
 .contact-card .github-content .github-redirect:hover {
     border: 1px solid var(--accent-glow);
     box-shadow: 0 0 10px 2px var(--accent-glow);
+    cursor: pointer;
 }
 .contact-card .github-content .github-redirect:hover svg {
     fill: var(--accent-hover);
