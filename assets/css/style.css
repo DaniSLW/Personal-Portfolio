@@ -699,16 +699,25 @@ main .content .content-wrapper {
     flex-direction: column;
     gap: 20px;
 }
+
 .contact-card .github-content .github-redirect {
     width: 40px;
     height: 40px;
     padding: 10px;
     background-color: var(--bg-secondary);
     border-radius: 10px;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.contact-card .gihut-content .github-redirect a {
-    text-decoration: none;
-    color: #fff;
+.contact-card .github-content .github-redirect:hover {
+    border: 1px solid var(--accent-glow);
+    box-shadow: 0 0 10px 2px var(--accent-glow);
+}
+.contact-card .github-content .github-redirect:hover svg {
+    fill: var(--accent-hover);
+    transform: scale(1.1);
 }
 .contact-card .github-content .github-redirect svg {
     width: 20px;
