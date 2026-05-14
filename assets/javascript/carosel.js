@@ -1,4 +1,3 @@
-// ===== CAROUSEL =====
 (function () {
   const track   = document.querySelector('.carousel-track');
   const nextBtn = document.querySelector('.carousel-btn.next');
@@ -7,17 +6,20 @@
 
   if (!track || !nextBtn || !prevBtn) return;
 
-  const SCROLL_AMOUNT = 1224; // card width (600) + gap (24)
+  function getScrollAmount() {
+    const card = track.querySelector('.card-project');
+    if (!card) return 1224;
+    const gap = parseFloat(getComputedStyle(track).gap) || 24;
+    return card.offsetWidth + gap;
+  }
 
-  // ── Arrow buttons ──────────────────────────────────────────
   nextBtn.addEventListener('click', () => {
-    track.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+    track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
   });
   prevBtn.addEventListener('click', () => {
-    track.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+    track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
   });
 
-  // ── Pagination dots ────────────────────────────────────────
   function buildDots() {
     const existing = carousel.querySelector('.carousel-pagination');
     if (existing) existing.remove();
@@ -34,7 +36,7 @@
       dot.setAttribute('aria-label', `Go to card ${i + 1}`);
       if (i === 0) dot.classList.add('active');
       dot.addEventListener('click', () => {
-        track.scrollTo({ left: i * SCROLL_AMOUNT, behavior: 'smooth' });
+        track.scrollTo({ left: i * getScrollAmount(), behavior: 'smooth' });
       });
       pagination.appendChild(dot);
     });
@@ -43,19 +45,24 @@
   }
 
   function updateDots() {
-    const dots  = carousel.querySelectorAll('.carousel-dot');
-    const index = Math.round(track.scrollLeft / SCROLL_AMOUNT);
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    if (!dots.length) return;
+    const scrollAmt = getScrollAmount();
+
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const index = atEnd
+      ? dots.length - 1
+      : scrollAmt > 0 ? Math.round(track.scrollLeft / scrollAmt) : 0;
+
     dots.forEach((d, i) => d.classList.toggle('active', i === index));
   }
 
-  // ── Update button visibility ───────────────────────────────
   function updateButtons() {
-    prevBtn.style.opacity = track.scrollLeft <= 4 ? '0.3' : '1';
+    prevBtn.style.opacity = track.scrollLeft <= 3 ? '0.3' : '1';
     const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
     nextBtn.style.opacity = atEnd ? '0.3' : '1';
   }
 
-  // ── Keyboard navigation ────────────────────────────────────
   document.addEventListener('keydown', e => {
     const projectSection = document.getElementById('projects');
     if (!projectSection) return;
@@ -65,39 +72,44 @@
 
     if (e.key === 'ArrowRight') {
       e.preventDefault();
-      track.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+      track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
     }
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      track.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+      track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
     }
   });
 
-  // ── Touch / swipe ──────────────────────────────────────────
   let touchStartX = 0;
   track.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
   }, { passive: true });
   track.addEventListener('touchend', e => {
     const delta = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(delta) > 50) {
-      track.scrollBy({ left: delta > 0 ? SCROLL_AMOUNT : -SCROLL_AMOUNT, behavior: 'smooth' });
+    if (Math.abs(delta) > 40) {
+      track.scrollBy({ left: delta > 0 ? getScrollAmount() : -getScrollAmount(), behavior: 'smooth' });
     }
   });
 
-  // ── Scroll listener ────────────────────────────────────────
   track.addEventListener('scroll', () => {
     updateDots();
     updateButtons();
   }, { passive: true });
 
-  // ── Wait for cards to be injected by script.js ─────────────
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      buildDots();
+      updateButtons();
+    }, 200);
+  }, { passive: true });
+
   const mutationObserver = new MutationObserver(() => {
     buildDots();
     updateButtons();
   });
   mutationObserver.observe(track, { childList: true });
 
-  // Initial state
   updateButtons();
 })();

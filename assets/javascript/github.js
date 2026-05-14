@@ -8,7 +8,6 @@
     stars:    document.getElementById('starCount'),
   };
 
-  // Skeleton pulse while loading
   [ids.name, ids.login, ids.repos, ids.stars].forEach(el => {
     if (el) el.classList.add('gh-loading');
   });
@@ -28,13 +27,12 @@
       ? repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0)
       : 0;
 
-    // Animate numbers counting up
     function countUp(el, target, duration = 800) {
       if (!el) return;
       const start = performance.now();
       const step = (now) => {
         const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.round(eased * target);
         if (progress < 1) requestAnimationFrame(step);
       };

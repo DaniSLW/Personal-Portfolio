@@ -28,7 +28,6 @@ class Particle {
   }
 
   update() {
-    // Subtle mouse repulsion
     if (mouse.active) {
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
@@ -41,14 +40,12 @@ class Particle {
       }
     }
 
-    // Ease back to base speed
     this.speedX += (this.baseSpeedX - this.speedX) * 0.04;
     this.speedY += (this.baseSpeedY - this.speedY) * 0.04;
 
     this.x += this.speedX;
     this.y += this.speedY;
 
-    // Wrap around edges
     if (this.x > W + 10) this.x = -10;
     if (this.x < -10)    this.x = W + 10;
     if (this.y > H + 10) this.y = -10;
@@ -98,7 +95,6 @@ function animate() {
   animId = requestAnimationFrame(animate);
 }
 
-// Mouse tracking
 window.addEventListener("mousemove", e => {
   mouse.x = e.clientX;
   mouse.y = e.clientY;
@@ -106,7 +102,6 @@ window.addEventListener("mousemove", e => {
 });
 window.addEventListener("mouseleave", () => { mouse.active = false; });
 
-// Resize — debounced
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);

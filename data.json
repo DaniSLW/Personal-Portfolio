@@ -2,7 +2,7 @@
     "Project-1": [
         {
             "title": "Personal Portfolio",
-            "description": "A personal portfolio website showcasing my projects and skills.",
+            "description": "A responsive personal portfolio website designed to showcase my web development projects, skills, and professional journey. Built dynamically using JSON to easily manage and render project data.",
             "preview-image": "assets/images/preview.png",
             "tech": ["HTML", "CSS", "JavaScript", "JSON"],
             "status": "In Progress",
@@ -13,7 +13,7 @@
     "Project-2": [
         {
             "title": "Custom Alerts",
-            "description": "A project that replaces the default JavaScript alert with a custom-designed one.",
+            "description": "A lightweight, customizable UI component that replaces standard browser JavaScript alert dialogs with modern, aesthetically pleasing, and user-friendly pop-up notifications.",
             "preview-image": "https://raw.githubusercontent.com/DaniSLW/Custom-Alerts/refs/heads/main/assets/preview.png",
             "tech": ["HTML", "CSS", "JavaScript"],
             "status": "Live",
@@ -24,7 +24,7 @@
     "Project-3": [
         {
             "title": "Battle Pass Template",
-            "description": "A battle pass template inspired by Fortnite's design, showcasing a tier-based reward system.",
+            "description": "An interactive, frontend UI template inspired by Fortnite's battle pass design. It features a responsive, scrollable tier-based progression system for showcasing unlockable rewards.",
             "preview-image": "https://raw.githubusercontent.com/DaniSLW/Battlepass-Template-1/refs/heads/main/assets/img/preview.png",
             "tech": ["HTML", "CSS", "JavaScript"],
             "status": "Live",
@@ -35,7 +35,7 @@
     "Project-4": [
         {
             "title": "Atestat AI",
-            "description": "A battle pass template inspired by Fortnite's design, showcasing a tier-based reward system.",
+            "description": "An educational web project built for a high school graduation certificate (Atestat). It explores the concepts, history, and applications of Artificial Intelligence through an informative and interactive web interface.",
             "preview-image": "https://raw.githubusercontent.com/DaniSLW/Atestat-AI/refs/heads/main/preview.png",
             "tech": ["HTML", "CSS", "JavaScript"],
             "status": "Archived",

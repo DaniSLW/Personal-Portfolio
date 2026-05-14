@@ -26,12 +26,10 @@
     const card = document.createElement('div');
     card.classList.add('card-project');
 
-    // Title
     const title = document.createElement('h3');
     title.textContent = project.title || 'Untitled';
     card.appendChild(title);
 
-    // Image
     const imgWrap = document.createElement('div');
     imgWrap.classList.add('image-wrapper');
     const img = document.createElement('img');
@@ -41,7 +39,6 @@
     imgWrap.appendChild(img);
     card.appendChild(imgWrap);
 
-    // Tech badges
     if (Array.isArray(project.tech) && project.tech.length) {
       const badges = document.createElement('div');
       badges.classList.add('badges-container');
@@ -55,19 +52,16 @@
       card.appendChild(badges);
     }
 
-    // Description
     const desc = document.createElement('p');
     desc.textContent = project.description || '';
     card.appendChild(desc);
 
-    // Status
     const statusText = project.status || 'Unknown';
     const status = document.createElement('div');
     status.textContent = statusText;
     status.classList.add('status-project', statusText.toLowerCase().replace(/\s+/g, '-'));
     card.appendChild(status);
 
-    // Links
     const links = document.createElement('div');
     links.classList.add('links-container');
 
@@ -96,7 +90,6 @@
     return card;
   }
 
-  // Load data
   fetch('data.json')
     .then(res => {
       if (!res.ok) throw new Error('Failed to fetch data.json');
@@ -114,3 +107,23 @@
     })
     .catch(err => console.error('Error loading projects:', err));
 })();
+
+const hamburger = document.getElementById('navHamburger');
+const mobileNav = document.getElementById('mobileNav');
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  mobileNav.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+  mobileNav.setAttribute('aria-hidden', String(!isOpen));
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-nav-link, .mobile-nav-cta').forEach(link => {
+  link.addEventListener('click', closeMobileNav);
+});
