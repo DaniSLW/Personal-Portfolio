@@ -1,22 +1,24 @@
-const timeline = document.querySelector(".timeline");
-const items = document.querySelectorAll(".timeline-item");
+(function () {
+  const timeline = document.querySelector('.timeline');
+  if (!timeline) return;
 
-const observer = new IntersectionObserver(entries => {
+  const items = timeline.querySelectorAll('.timeline-item');
+
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+      if (!entry.isIntersecting) return;
 
-            // animăm linia
-            timeline.classList.add("active");
+      timeline.classList.add('active');
 
-            // animăm items stagger
-            items.forEach((item, i) => {
-                setTimeout(() => {
-                    item.classList.add("active");
-                }, i * 200);
-            });
+      items.forEach((item, i) => {
+        setTimeout(() => {
+          item.classList.add('active');
+        }, i * 180);
+      });
 
-        }
+      observer.unobserve(entry.target);
     });
-}, { threshold: 0.3 });
+  }, { threshold: 0.25 });
 
-observer.observe(timeline);
+  observer.observe(timeline);
+})();
