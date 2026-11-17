@@ -1,5 +1,10 @@
-
+/* ==========================================
+   GLASSY CAROUSEL
+   Cardul din centru e mare, cele vecine se văd
+   înclinate 3D, mai mici și ușor estompate.
+   ========================================== */
 .carousel {
+  --card-w: min(560px, calc(100vw - 300px));
   position: relative;
   width: 100%;
   display: flex;
@@ -7,16 +12,17 @@
   justify-content: center;
 }
 
+/* --- Navigation Buttons --- */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 20;
   background: rgba(9, 19, 36, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(56, 189, 248, 0.2);
-  color: var(--accent);
+  color: var(--accent, #38bdf8);
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -28,56 +34,106 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
-.carousel-btn:hover {
-  background: var(--accent);
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--accent, #38bdf8);
   color: #060d1a;
-  border-color: var(--accent);
-  box-shadow: 0 0 20px var(--accent-glow), 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-color: var(--accent, #38bdf8);
+  box-shadow: 0 0 20px var(--accent-glow, rgba(56, 189, 248, 0.4)), 0 4px 20px rgba(0, 0, 0, 0.4);
   transform: translateY(-50%) scale(1.08);
 }
-.carousel-btn:active {
+
+.carousel-btn:active:not(:disabled) {
   transform: translateY(-50%) scale(0.97);
 }
+
+.carousel-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.carousel-btn:focus-visible,
+.carousel-dot:focus-visible {
+  outline: 2px solid var(--accent, #38bdf8);
+  outline-offset: 4px;
+}
+
 .carousel-btn.prev { left: -70px; }
 .carousel-btn.next { right: -70px; }
 
-
+/* --- Carousel Track --- */
 .carousel-track {
+  position: relative;
   display: flex;
-  gap: 24px;
-  padding: 30px 20px 50px;
-  scroll-padding-inline-start: 20px;
+  align-items: center;
+  gap: 8px;
+  /* padding lateral = cardul 1 și ultimul pot ajunge în centru */
+  padding: 50px calc(50% - var(--card-w) / 2) 70px;
+  scroll-padding-inline: calc(50% - var(--card-w) / 2);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
   width: 100%;
+  touch-action: pan-x pan-y;
 }
-.carousel-track::-webkit-scrollbar { display: none; }
 
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Card (glass) --- */
 .carousel-track .card-project {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   flex-shrink: 0;
+  transform-origin: center center;
+  /* transform/opacity/filter sunt controlate din JS la scroll → fără tranziție,
+     ca să nu apară lag */
+  /* !important: să nu fie suprascris de `transition: all` din style.css */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+  will-change: transform, opacity;
+  cursor: pointer;
 }
 
 #project .card-project {
-  min-width: min(700px, calc(100vw - 220px));
-  max-width: min(700px, 90vw);
-
+  width: var(--card-w);
+  min-width: var(--card-w);
+  max-width: var(--card-w);
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto 1fr auto;
   column-gap: 0;
-
   min-height: 0;
   max-height: none;
+
+  /* efect de sticlă */
+  background: linear-gradient(145deg, rgba(30, 48, 78, 0.92), rgba(14, 26, 48, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* cardul din centru */
+#project .card-project.is-active {
+  cursor: default;
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.45),
+              0 0 40px var(--accent-glow, rgba(56, 189, 248, 0.18)),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* cardurile laterale: nu se dă click pe linkurile lor, doar le aduci în centru */
+#project .card-project:not(.is-active) a,
+#project .card-project:not(.is-active) button {
+  pointer-events: none;
 }
 
 #project .card-project .image-wrapper {
   grid-column: 1;
   grid-row: 1;
   width: 100%;
-  height: 260px;
+  height: 230px;
   min-height: 0;
 }
 
@@ -89,15 +145,17 @@
   grid-column: 1;
 }
 
+/* --- Pagination Dots --- */
 .carousel-pagination {
   position: absolute;
-  bottom: 8px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
   z-index: 10;
 }
+
 .carousel-dot {
   width: 6px;
   height: 6px;
@@ -108,6 +166,7 @@
   border: none;
   padding: 0;
 }
+
 .carousel-dot.active {
   background: var(--accent, #38bdf8);
   box-shadow: 0 0 10px var(--accent-glow, rgba(56, 189, 248, 0.4));
@@ -115,20 +174,17 @@
   border-radius: 3px;
 }
 
-/* === ENHANCED RESPONSIVE - 1100px === */
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
 @media (max-width: 1100px) {
+  .carousel { --card-w: min(500px, calc(100vw - 220px)); }
   .carousel-btn.prev { left: -48px; }
   .carousel-btn.next { right: -48px; }
-
-  #project .card-project {
-    min-width: min(660px, calc(100vw - 160px));
-    max-width: min(660px, 90vw);
-  }
 }
 
-
-/* === ENHANCED RESPONSIVE - 900px === */
 @media (max-width: 900px) {
+  .carousel { --card-w: min(440px, 66vw); }
   .carousel-btn.prev { left: 6px; }
   .carousel-btn.next { right: 6px; }
   .carousel-btn {
@@ -136,71 +192,22 @@
     height: 38px;
     font-size: 0.85rem;
     background: rgba(6, 13, 26, 0.75);
-    opacity: 0.85;
   }
-
-  .carousel-track {
-    padding-left: 52px;
-    padding-right: 52px;
-    padding-bottom: 44px;
-    scroll-padding-inline-start: 52px;
-  }
-
-  #project .card-project {
-    min-width: min(600px, calc(100vw - 120px));
-    max-width: min(600px, 82vw);
-    min-height: 0;
-  }
-
-  #project .card-project .image-wrapper {
-    height: 220px;
-  }
+  #project .card-project .image-wrapper { height: 200px; }
 }
 
-
-/* === TABLET SMALL - 600px === */
 @media (max-width: 600px) {
+  /* pe telefon se văd ~15% din cardurile vecine în stânga și dreapta */
+  .carousel { --card-w: 70vw; }
   .carousel-btn { display: none; }
-
-  .carousel-track {
-    padding: 20px 16px 44px;
-    gap: 14px;
-    scroll-padding-inline-start: 16px;
-  }
-
-  #project .card-project {
-    min-width: 88vw;
-    max-width: 88vw;
-    padding: 16px;
-    min-height: 0;
-  }
-
-  #project .card-project .image-wrapper {
-    height: 190px;
-  }
-
-  #project .card-project h3 { font-size: 1.1rem; }
-
+  .carousel-track { padding-top: 30px; padding-bottom: 60px; }
+  #project .card-project { padding: 14px; }
+  #project .card-project .image-wrapper { height: 160px; }
+  #project .card-project h3 { font-size: 1.05rem; }
   .carousel-dot { width: 8px; height: 8px; }
   .carousel-dot.active { width: 24px; }
 }
 
-
-/* === MOBILE - 400px === */
-@media (max-width: 400px) {
-  .carousel-track {
-    padding-left: 10px;
-    padding-right: 10px;
-    scroll-padding-inline-start: 10px;
-  }
-
-  #project .card-project {
-    min-width: 92vw;
-    max-width: 92vw;
-    padding: 14px;
-  }
-
-  #project .card-project .image-wrapper {
-    height: 170px;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { scroll-behavior: auto; }
 }
